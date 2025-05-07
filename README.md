@@ -1,14 +1,18 @@
+
 # JKFLIPFLOP-USING-IF-ELSE
 
-**AIM:** 
+## Developed by: Preethi.K
+## Register no: 212224240118
+
+## AIM: 
 
 To implement  JK flipflop using verilog and validating their functionality using their functional tables
 
-**SOFTWARE REQUIRED:**
+## SOFTWARE REQUIRED:
 
 Quartus prime
 
-**THEORY**
+## THEORY
 
 **JK Flip-Flop**
 
@@ -32,17 +36,58 @@ By using three variable K-Map, we can get the simplified expression for next sta
 
 The maximum possible groupings of adjacent ones are already shown in the figure. Therefore, the simplified expression for next state Qt+1t+1 is Q(t+1)=JQ(t)′+K′Q(t)Q(t+1)=JQ(t)′+K′Q(t)
 
-**Procedure**
+## Procedure
+```
+1.Use module projname(input,output) to start the Verilog programming.
+2.Assign inputs and outputs using the word input and output respectively.
+3.Use defined keywords like wire,assign and required logic gates to represent the boolean expression.
+4.Use each output to represent one for difference and the other for borrow.
+5.End the verilog program using keyword endmodule
+```
+## PROGRAM
+```
+module ex7(q, qb,j,k,clock,reset);
+    input j,k,clock,reset;
+    output reg q, qb;
+	 
+always @ (posedge (clock))
 
-/* write all the steps invloved */
+    begin 
+        if (!reset)
+            begin
+               q <= q;
+               qb <=qb;
+            end   
+        
+else
+   begin
+	   if(j==0 && k==0)
+		   begin
+			q<=q;
+			qb<=qb;
+			end
+		else if(j!=k)
+		   begin
+			q<=j;
+			qb<=k;
+			end
+		else if(j==1 && k==1)
+		    begin
+			 q<=~q;
+			 qb<=~qb;
+			 end
+	end
+end	
+endmodule
+```
 
-**PROGRAM**
+## RTL LOGIC FOR FLIPFLOPS
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+![Screenshot 2025-05-07 154409](https://github.com/user-attachments/assets/5817f8db-bcd5-4566-a1be-5e6836ef8960)
 
-**RTL LOGIC FOR FLIPFLOPS**
+## TIMING DIGRAMS FOR FLIP FLOPS
 
-**TIMING DIGRAMS FOR FLIP FLOPS**
+![Screenshot 2025-05-07 154426](https://github.com/user-attachments/assets/6ab69d33-64cf-48ac-bbe2-6d39e072fd3f)
 
 **RESULTS**
+Thus the code is successfully excecuted.
